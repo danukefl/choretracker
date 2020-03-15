@@ -14,16 +14,12 @@
 	
 	<?php
 
-<<<<<<< HEAD
 	$DB_HOST = getenv('DB_HOST');
 	$DB_USER = getenv('DB_USER');
 	$DB_PASS = getenv('DB_PASS');
 	$DB_NAME = getenv('DB_NAME');
 
 	$conn = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-=======
-	$conn = mysqli_connect($_ENV[DB_HOST], $_ENV[DB_USER], $_ENV[DB_PASS], $_ENV[DB_NAME]);
->>>>>>> fcf74396290d2a5a95b3d9bb5727628e4d03833f
 
         if (empty($_POST['id']) && !empty($_POST['task'])) {
                 $taskname = mysqli_real_escape_string($conn, $_POST['task']);
