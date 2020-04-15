@@ -69,7 +69,7 @@
 	?>
 	</div>
 		<?php
-		if (!empty($_GET['nobackground'])) {
+		if (empty($_GET['nobackground'])) {
 			echo '
 			<script type="text/javascript" src="common/js/jquery.min.js"></script>
 			<script src="common/js/trianglify.min.js"></script>
