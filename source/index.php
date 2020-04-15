@@ -68,46 +68,52 @@
 
 	?>
 	</div>
+		<?php
+		if (!empty($_GET['nobackground'])) {
+			echo '
+			<script type="text/javascript" src="common/js/jquery.min.js"></script>
+			<script src="common/js/trianglify.min.js"></script>
+			<script>
+				function addTriangleTo(target) {
+					var dimensions = target.getClientRects()[0];
+					var pattern = Trianglify({
+						width: dimensions.width,
+						height: dimensions.height
+					});
 
-                <script type="text/javascript" src="common/js/jquery.min.js"></script>
-                <script src="common/js/trianglify.min.js"></script>
-                <script>
-                        function addTriangleTo(target) {
-                                var dimensions = target.getClientRects()[0];
-                                var pattern = Trianglify({
-                                        width: dimensions.width,
-                                        height: dimensions.height
-                                });
-
-                                target.style['background-image'] = 'url(' + pattern.png() + ')';
-                                target.style['background-size'] = 'cover';
-                                target.style['-webkit-background-size'] = 'cover';
-                                target.style['-moz-background-size'] = 'cover';
-                                target.style['-o-background-size'] = 'cover';
-                        }
-
-                        var resizeTimer;
-                        $(window).on('resize', function(e) {
-                                clearTimeout(resizeTimer);
-                                resizeTimer = setTimeout(function() {
-                                        addTriangleTo(homepage);
-                                }, 400);
-                        });
-
-                        addTriangleTo(homepage);
-                </script>
-				<script>
-				var submission = "";
-				function validate_form() {
-					if (submission == "deletetask") {
-						var r = confirm('Do you really want to delete this task?');
-						if (r == false) {	
-							return false;
-						}
-					}
+					target.style[\'background-image\'] = \'url(\' + pattern.png() + \')\';
+					target.style[\'background-size\'] = \'cover\';
+					target.style[\'-webkit-background-size\'] = \'cover\';
+					target.style[\'-moz-background-size\'] = \'cover\';
+					target.style[\'-o-background-size\'] = \'cover\';
 				}
 
-				</script>
+				var resizeTimer;
+				$(window).on(\'resize\', function(e) {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(function() {
+						addTriangleTo(homepage);
+					}, 400);
+				});
+
+				addTriangleTo(homepage);
+			</script>';
+		}
+			
+		?>	
+			
+		<script>
+		var submission = "";
+		function validate_form() {
+			if (submission == "deletetask") {
+				var r = confirm('Do you really want to delete this task?');
+				if (r == false) {	
+					return false;
+				}
+			}
+		}
+
+		</script>
 	<?php
  	#if (!empty($_POST['id'])) {     echo '<script type="text/javascript"> $(document).ready(function(){    alert("' . $_POST['id'] . '");}); </script> '; };
 	?>
